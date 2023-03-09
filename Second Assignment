@@ -1,0 +1,361 @@
+public class Staffmember {
+    private String firstName;
+    private String lastName;
+    private String deptNumber;
+    private double hoursWorked;
+
+    public Staffmember(String firstName, String lastName, String deptNumber, double hoursWorked) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.deptNumber = deptNumber;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDeptNumber() {
+        return deptNumber;
+    }
+
+    public void setDeptNumber(String deptNumber) {
+        this.deptNumber = deptNumber;
+    }
+
+    public double getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(double hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public void display() {
+        System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+        System.out.println("Department Number: " + deptNumber);
+        System.out.println("Hours Worked: " + hoursWorked);
+    }
+}
+
+public class Manager extends Staffmember {
+    private double bonus;
+
+    public Manager(String firstName, String lastName, String deptNumber, double hoursWorked, double bonus) {
+        super(firstName, lastName, deptNumber, hoursWorked);
+        this.bonus = bonus;
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Bonus: " + bonus);
+    }
+}
+
+public class SalesRep extends Staffmember {
+    private double allowance;
+
+    public SalesRep(String firstName, String lastName, String deptNumber, double hoursWorked, double allowance) {
+        super(firstName, lastName, deptNumber, hoursWorked);
+        this.allowance = allowance;
+    }
+
+    public double getAllowance() {
+        return allowance;
+    }
+
+    public void setAllowance(double allowance) {
+        this.allowance = allowance;
+    }
+
+    public void display() {
+        super.display();
+        System.out.println("Allowance: " + allowance);
+    }
+}
+
+#2
+public class Payroll {
+    public static void main(String[] args) {
+        StaffMember[] staff = new StaffMember[4];
+        staff[0] = new Manager("John", "Doe", "001", 40.0, 1000.0);
+        staff[1] = new SalesRep("Jane", "Smith", "002", 35.0, 500.0);
+        staff[2] = new Manager("Mike", "Johnson", "001", 45.0, 1500.0);
+        staff[3] = new SalesRep("Sarah", "Lee", "002", 30.0, 750.0);
+
+        for (StaffMember s : staff) {
+            s.display();
+            System.out.println("Payment: $" + s.getHoursWorked() * 15.0);
+            if (s instanceof Manager) {
+                Manager m = (Manager) s;
+                System.out.println("Bonus: $" + m.getBonus());
+            } else if (s instanceof SalesRep) {
+                SalesRep sr = (SalesRep) s;
+                System.out.println("Allowance: $" + sr.getAllowance());
+            }
+            System.out.println();
+        }
+    }
+}
+#3
+
+public class Payroll {
+    public static void main(String[] args) {
+        StaffMember[] staff = new StaffMember[4];
+        staff[0] = new Manager("John", "Doe", "001", 40.0, 1000.0);
+        staff[1] = new SalesRep("Jane", "Smith", "002", 35.0, 500.0);
+        staff[2] = new Manager("Mike", "Johnson", "001", 45.0, 1500.0);
+        staff[3] = new SalesRep("Sarah", "Lee", "002", 30.0, 750.0);
+
+        for (StaffMember s : staff) {
+            s.display();
+            System.out.println("Payment: $" + s.getHoursWorked() * 15.0);
+            if (s instanceof Manager) {
+                Manager m = (Manager) s;
+                System.out.println("Bonus: $" + m.getBonus());
+            } else if (s instanceof SalesRep) {
+                SalesRep sr = (SalesRep) s;
+                System.out.println("Allowance: $" + sr.getAllowance());
+            }
+            System.out.println();
+        }
+    }
+}
+#4
+
+        import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> salesReps = new ArrayList<String>();
+
+        // Adding Sales Rep to the ArrayList
+        salesReps.add("John Smith");
+        salesReps.add("Jane Doe");
+        salesReps.add("Bob Johnson");
+        salesReps.add("Sara Lee");
+        salesReps.add("Mike Davis");
+
+        // Print the Sales Rep ArrayList
+        System.out.println("Sales Reps: " + salesReps);
+    }
+}
+#5
+        Sales Reps:
+        John Smith
+        Jane Doe
+        Bob Johnson
+        Sara Lee
+        Mike Davis
+#6
+public class Payroll {
+    public static void main(String[] args) {
+        Employee[] employees = new Employee[4];
+
+        employees[0] = new Employee("John Smith", 50000.0);
+        employees[1] = new Manager("Jane Doe", 75000.0, "Sales");
+        employees[2] = new SalesRep("Bob Johnson", 40000.0, 5000.0);
+        employees[3] = new Manager("Sara Lee", 80000.0, "Marketing");
+
+        for (Employee emp : employees) {
+            emp.display();
+        }
+    }
+}
+
+class Employee {
+    protected String name;
+    protected double salary;
+
+    public Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+class Manager extends Employee {
+    private String department;
+
+    public Manager(String name, double salary, String department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+        System.out.println("Department: " + department);
+    }
+}
+
+class SalesRep extends Employee {
+    private double commission;
+
+    public SalesRep(String name, double salary, double commission) {
+        super(name, salary);
+        this.commission = commission;
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
+        System.out.println("Commission: " + commission);
+    }
+}
+#7
+class Payroll {
+    private String name;
+    private double salary;
+
+    public Payroll(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: $" + salary);
+    }
+}
+
+class Manager extends Payroll {
+    private String department;
+
+    public Manager(String name, double salary, String department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Department: " + department);
+    }
+}
+
+class SalesRep extends Payroll {
+    private int sales;
+
+    public SalesRep(String name, double salary, int sales) {
+        super(name, salary);
+        this.sales = sales;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Sales: $" + sales);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payroll employee1 = new Payroll("John Smith", 50000);
+        Manager employee2 = new Manager("Jane Doe", 60000, "Sales");
+        SalesRep employee3 = new SalesRep("Bob Johnson", 40000, 100000);
+
+        employee1.display();
+        employee2.display();
+        employee3.display();
+    }
+}
+#8
+class Payroll {
+    private String name;
+    private double salary;
+
+    public Payroll(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: $" + salary);
+    }
+}
+
+class Manager extends Payroll {
+    private String department;
+
+    public Manager(String name, double salary, String department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Department: " + department);
+    }
+}
+
+class SalesRep extends Payroll {
+    private int sales;
+
+    public SalesRep(String name, double salary, int sales) {
+        super(name, salary);
+        this.sales = sales;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Sales: $" + sales);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager = new Manager("Jane Doe", 60000, "Sales");
+        SalesRep salesRep = new SalesRep("Bob Johnson", 40000, 100000);
+
+        System.out.println("Manager salary: $" + manager.getSalary());
+        System.out.println("Sales Rep salary: $" + salesRep.getSalary());
+    }
+}
+
