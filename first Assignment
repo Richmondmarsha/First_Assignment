@@ -1,0 +1,62 @@
+ public static void main(String[] args) {
+        System.out.println("Hello world!");
+        package creditsolution;
+
+import java.util.Scanner;
+
+        public class Client {
+            private int idNumber;
+            private String firstName;
+            private int age;
+            private Card card;
+
+            public Client() {
+            }
+
+            public Client(int idNumber, String firstName, int age, Card card) {
+                this.idNumber = idNumber;
+                this.firstName = firstName;
+                this.age = age;
+                this.card = card;
+            }
+
+            public int getIdNumber() {
+                return idNumber;
+            }
+
+            public void setIdNumber(int idNumber) {
+                this.idNumber = idNumber;
+            }
+
+            public String getFirstName() {
+                return firstName;
+            }
+
+            public void setFirstName(String firstName) {
+                this.firstName = firstName;
+            }
+
+            public int getAge() {
+                return age;
+            }
+
+            public void setAge(int age) {
+                this.age = age;
+            }
+
+            public Card getCard() {
+                return card;
+            }
+
+            public void setCard(Card card) {
+                this.card = card;
+            }
+
+            public void display() {
+                System.out.println("Client ID: " + idNumber);
+                System.out.println("Client Name: " + firstName);
+                System.out.println("Client Age: " + age);
+                System.out.println("Card Information: ");
+                card.display();
+            }
+        }
